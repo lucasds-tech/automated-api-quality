@@ -29,7 +29,6 @@
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
 			<version>${rest-assured.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -56,21 +55,18 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- DATA | JSON -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>net.datafaker</groupId>
 			<artifactId>datafaker</artifactId>
 			<version>${datafaker.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -83,7 +79,6 @@
 			<groupId>io.qameta.allure</groupId>
 			<artifactId>allure-testng</artifactId>
 			<version>${allure.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
