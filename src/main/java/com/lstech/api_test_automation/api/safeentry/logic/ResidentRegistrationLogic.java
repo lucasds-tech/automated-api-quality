@@ -16,7 +16,7 @@ public class ResidentRegistrationLogic {
 
     public ResidentRegistrationLogic() {
         this.envConfig = new EnvironmentConfig();
-        this.httpClient = new HttpClient();
+        this.httpClient = new HttpClient(envConfig);
     }
 
     // Cenário 1: Cadastrar Um Morador Com Sucesso
