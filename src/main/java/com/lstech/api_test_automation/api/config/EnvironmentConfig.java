@@ -1,26 +1,55 @@
 package com.lstech.api_test_automation.api.config;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.extern.log4j.Log4j2;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+
+@Data
+@Builder
+@Log4j2
 public class EnvironmentConfig {
 
-    private static final Properties properties = new Properties();
-    static {
-        try (InputStream input = EnvironmentConfig.class
-                .getClassLoader()
-                .getResourceAsStream("environment-config.properties")) {
-            properties.load(input);
-        } catch (IOException e) {
-            throw new RuntimeException("Não foi possivel carregar environment-config.properties", e);
-        }
-    }
-    public static String get(String key) {
-        return properties.getProperty(key);
+    private String environment;
+    private String baseUrl;
+    private String nome;
+    private String sobrenome;
+    private String documento;
+    private String residencia;
+
+    public static EnvironmentConfig forEnvironment(String environment) {
+        Properties props = loadProperties();
+
+        return EnvironmentConfig.builder()
+                .baseUrl(getProperty((props), "base.url"))
+                .nome(getProperty((props), "nome"))
+                .sobrenome(getProperty((props), "sobrenome"))
+                .documento(getProperty((props), "documento"))
+                .residencia(getProperty((props), "residencia"))
+                .build();
     }
 
-    public static String getBaseUrl() {
-        return get("base.url");
+    private static Properties loadProperties() {
+        Properties props = new Properties();
+
+        try (InputStream input = EnvironmentConfig.class.getClassLoader()
+                .getResourceAsStream("environment-config.properties")) {
+            if (input == null) {
+                throw new RuntimeException("Arquivo 'environment-config.properties não encontrado");
+            }
+            props.load(input);
+        } catch (IOException e) {
+            log.error("Erro ao carregar configurações de ambiente: {}", e.getMessage());
+            throw new RuntimeException("Falha ao carregar configuração, e");
+        }
+        return props;
+    }
+
+    public static String getProperty(Properties props, String key) {
+        return getProperty(props, key);
     }
 }
