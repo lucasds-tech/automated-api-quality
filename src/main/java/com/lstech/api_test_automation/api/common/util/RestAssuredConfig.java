@@ -1,4 +1,4 @@
-package com.lstech.api_test_automation.api.utils;
+package com.lstech.api_test_automation.api.common.util;
 
 import com.lstech.api_test_automation.api.config.EnvironmentConfig;
 import io.restassured.RestAssured;
