@@ -26,10 +26,10 @@ public class EnvironmentConfig {
 
         return EnvironmentConfig.builder()
                 .baseUrl(getProperty((props), "base.url"))
-                .nome(getProperty((props), "nome"))
-                .sobrenome(getProperty((props), "sobrenome"))
-                .documento(getProperty((props), "documento"))
-                .residencia(getProperty((props), "residencia"))
+                .nome(getProperty((props), "resident.nome"))
+                .sobrenome(getProperty((props), "resident.sobrenome"))
+                .documento(getProperty((props), "resident.documento"))
+                .residencia(getProperty((props), "resident.residencia"))
                 .build();
     }
 
